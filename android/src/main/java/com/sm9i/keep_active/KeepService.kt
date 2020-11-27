@@ -50,7 +50,7 @@ class KeepService : Service() {
             manager.createNotificationChannel(channel)
             val notification: Notification = Notification.Builder(this, ID)
                     .setContentTitle("小马货运")
-                    .setContentText("这是重要通知")
+                    .setContentText("正在定位")
 //                    .setSmallIcon(R.mipmap.ic_launcher)
 //                    .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
                     .build()
