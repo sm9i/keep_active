@@ -62,8 +62,11 @@ class KeepService : Service() {
 
     //设置为 START_STICKY  利用系统机制在 Service 挂掉后自动拉活:
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        isExit = true
-        thread.start()
+        if (!thread.isAlive) {
+            isExit = true
+            thread.start()
+        }
+
         return START_STICKY
     }
 
