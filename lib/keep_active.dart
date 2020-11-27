@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -11,8 +12,16 @@ class KeepActive {
   }
 
   //保持
-  static void keep() => _channel.invokeMethod('keep');
+  static void keep() {
+    if (Platform.isAndroid) {
+      _channel.invokeMethod('keep');
+    }
+  }
 
   //结束
-  static void stop() => _channel.invokeMethod('stop');
+  static void stop() {
+    if (Platform.isAndroid) {
+      _channel.invokeMethod('stop');
+    }
+  }
 }
