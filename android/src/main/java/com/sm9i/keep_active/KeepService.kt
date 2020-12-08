@@ -34,8 +34,8 @@ class KeepService : Service() {
     inner class LogThread : Thread() {
         override fun run() {
             while (isExit) {
-                Thread.sleep(1000)
-                Log.d(TAG, "service is running")
+                sleep(1000)
+                Log.e(TAG, "service is running")
             }
             super.run()
         }
@@ -43,7 +43,6 @@ class KeepService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.d(TAG, "onCreate")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val channel = NotificationChannel(ID, NOTICE_NAME, NotificationManager.IMPORTANCE_HIGH)
@@ -72,7 +71,6 @@ class KeepService : Service() {
 
 
     override fun onDestroy() {
-        Log.d(TAG, "onDestroy")
         isExit = false
         super.onDestroy()
     }

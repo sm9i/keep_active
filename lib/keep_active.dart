@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class KeepActive {
@@ -12,16 +13,18 @@ class KeepActive {
   }
 
   //保持
-  static void keep() {
+  static Future<void> keep() async {
     if (Platform.isAndroid) {
-      _channel.invokeMethod('keep');
+      final result = await _channel.invokeMethod('keep');
+      debugPrint(result);
     }
   }
 
   //结束
-  static void stop() {
+  static Future<void> stop() async {
     if (Platform.isAndroid) {
-      _channel.invokeMethod('stop');
+      final result = await _channel.invokeMethod('stop');
+      debugPrint(result);
     }
   }
 }

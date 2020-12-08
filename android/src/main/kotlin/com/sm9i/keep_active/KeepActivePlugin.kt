@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi
 
@@ -36,8 +37,8 @@ public class KeepActivePlugin(private var mContext: Context? = null) : FlutterPl
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
-            "keep" -> keep()
-            "stop" -> stop()
+            "keep" -> keep(result)
+            "stop" -> stop(result)
             else -> result.notImplemented()
         }
     }
@@ -48,20 +49,24 @@ public class KeepActivePlugin(private var mContext: Context? = null) : FlutterPl
     }
 
 
-    private fun keep() {
+    private fun keep(result: Result) {
         val intent = Intent(mContext, KeepService::class.java)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             mContext?.startForegroundService(intent)
+
         } else {
             mContext?.startService(intent)
+
+            result.success(true)
         }
 
     }
 
-    private fun stop() {
+    private fun stop(result: Result) {
         val intent = Intent(mContext, KeepService::class.java)
         mContext?.stopService(intent)
+        result.success(true)
     }
 
 

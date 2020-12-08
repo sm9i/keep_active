@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - keep_active (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - keep_active (from `.symlinks/plugins/keep_active/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  keep_active:
+    :path: ".symlinks/plugins/keep_active/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  keep_active: 4eae65647dac6f0cc93bacbc7ecebd674d0cfa67
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0
