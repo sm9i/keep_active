@@ -16,7 +16,7 @@ class KeepActive {
   static Future<void> keep() async {
     if (Platform.isAndroid) {
       final result = await _channel.invokeMethod('keep');
-      debugPrint(result);
+      debugPrint('$result');
     }
   }
 
@@ -24,7 +24,7 @@ class KeepActive {
   static Future<void> stop() async {
     if (Platform.isAndroid) {
       final result = await _channel.invokeMethod('stop');
-      debugPrint(result);
+      debugPrint('$result');
     }
   }
 }

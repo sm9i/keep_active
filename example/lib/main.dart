@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:keep_active/keep_active.dart';
+import 'package:notification_permissions/notification_permissions.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,6 +30,17 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: <Widget>[
+              RaisedButton(
+                child: Text(
+                  'check notification',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                onPressed: () {
+                  NotificationPermissions.getNotificationPermissionStatus().then((value) {
+                    print(value);
+                  });
+                },
+              ),
               RaisedButton(
                 child: Text(
                   'keep',
